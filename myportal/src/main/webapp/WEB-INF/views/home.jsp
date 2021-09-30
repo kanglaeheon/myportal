@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Template</title>
+<title>My Homepage</title>
 <script type="text/javascript" 
 	src="<c:url value="/javascript/jqeury/jquery-3.6.0.js" />"></script>
 <link rel="stylesheet" 
