@@ -10,7 +10,7 @@
 <script type="text/javascript" 
 	src="<c:url value="/javascript/jqeury/jquery-3.6.0.js" />"></script>
 <link rel="stylesheet" 
-	href="<c:url value="/css/main.css" />" />
+	href="<c:url value="/css/guestbook.css" />" />
 </head>
 <body>
 	<div id="container">
