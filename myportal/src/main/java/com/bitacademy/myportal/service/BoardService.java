@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.bitacademy.myportal.repository.BoardVo;
 
-//	TODO: Delete 기능 구현해야하는지 파악 후 결정
 public interface BoardService {
 	public List<BoardVo> getList();	//	게시판 목록 보기
 	public BoardVo getContent(Long no);	//	게시물 조회
