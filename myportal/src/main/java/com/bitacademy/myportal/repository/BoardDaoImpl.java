@@ -13,8 +13,8 @@ public class BoardDaoImpl implements BoardDao {
 	
 	@Override
 	public List<BoardVo> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<BoardVo> list = sqlSession.selectList("board.selectAll");
+		return list;
 	}
 
 	@Override
@@ -26,8 +26,9 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public BoardVo getContent(Long no) {
-		// TODO Auto-generated method stub
-		return null;
+//		TODO: 예외처리
+		BoardVo boardVo = sqlSession.selectOne("board.selectOne");
+		return boardVo;
 	}
 
 	@Override
