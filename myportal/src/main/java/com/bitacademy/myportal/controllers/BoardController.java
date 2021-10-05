@@ -30,12 +30,12 @@ public class BoardController {
 	//	게시물 작성 폼
 	@RequestMapping(value="/write", method=RequestMethod.GET)
 	public String writeForm(HttpSession session) {
-		//	로그인 된 사용자인지 확인
-		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		if (authUser == null) {
-			System.err.println("로그인 사용자가 아닙니다");
-			return "redirect:/";
-		}
+		//	로그인 된 사용자인지 확인 -> 인터셉터에 처리 위임
+//		UserVo authUser = (UserVo)session.getAttribute("authUser");
+//		if (authUser == null) {
+//			System.err.println("로그인 사용자가 아닙니다");
+//			return "redirect:/";
+//		}
 		
 		return "board/write";
 	}
@@ -43,10 +43,11 @@ public class BoardController {
 	//	게시물 작성 액션
 	@RequestMapping(value="/write", method=RequestMethod.POST)
 	public String write(@ModelAttribute BoardVo boardVo, HttpSession session) {
+		//	로그인 사용자 확인 -> 인터셉터에 처리 위임
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		if (authUser == null) {
-			return "redirect:/";
-		}
+//		if (authUser == null) {
+//			return "redirect:/";
+//		}
 		//	작성자 정보 추가
 		boardVo.setUserNo(authUser.getNo());
 		//	삽입
