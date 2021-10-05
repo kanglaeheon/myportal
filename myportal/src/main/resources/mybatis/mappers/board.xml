@@ -24,6 +24,8 @@
 	
 	<select id="selectOne" resultType="boardVo">
 		SELECT
+			b.no,
+			
 			
 	</select>
 </mapper>
