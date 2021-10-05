@@ -14,8 +14,8 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDao boardDaoImpl;
 	@Override
 	public List<BoardVo> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<BoardVo> list = boardDaoImpl.selectAll();
+		return list;
 	}
 
 	@Override
@@ -36,4 +36,9 @@ public class BoardServiceImpl implements BoardService {
 		return false;
 	}
 
+	@Override
+	public BoardVo delete(Long no) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
