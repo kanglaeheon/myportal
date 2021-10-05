@@ -20,8 +20,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVo getContent(Long no) {
-		// TODO Auto-generated method stub
-		return null;
+		BoardVo boardVo = boardDaoImpl.getContent(no);
+		return boardVo;
 	}
 
 	@Override
@@ -32,8 +32,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public boolean update(BoardVo vo) {
-		// TODO Auto-generated method stub
-		return false;
+		int updatedCount = boardDaoImpl.update(vo);
+		return 1 == updatedCount;
 	}
 
 	@Override

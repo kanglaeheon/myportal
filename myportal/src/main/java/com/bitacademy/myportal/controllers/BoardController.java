@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,11 +21,12 @@ import com.bitacademy.myportal.service.BoardService;
 public class BoardController {
 	@Autowired
 	private BoardService boardServiceImpl;
+	private HttpSession httpSession;
 	@RequestMapping(value={"", "/", "/list"})
 	public String list(Model model) {
 		List<BoardVo> list = boardServiceImpl.getList();
 		model.addAttribute("list", list);
-		return "board/list";
+		return "/board/list";
 	}
 	
 	//	게시물 작성 폼
@@ -37,7 +39,7 @@ public class BoardController {
 //			return "redirect:/";
 //		}
 		
-		return "board/write";
+		return "/board/write";
 	}
 	
 	//	게시물 작성 액션
@@ -57,8 +59,31 @@ public class BoardController {
 	}
 	
 	// 게시물 조회
-	@RequestMapping(value="/view/*", method=RequestMethod.GET)
-	public String view(@ModelAttribute BoardVo boardVo) {
-		return "redirect:/board/view/" + boardVo.getNo();
+	@RequestMapping(value="/view/{no}", method=RequestMethod.GET)
+	public String view(@PathVariable("no") Long no, Model model) {
+		BoardVo boardVo = boardServiceImpl.getContent(no);
+		model.addAttribute("boardVo", boardVo);
+		
+		return "board/view";
+	}
+	
+	//	게시물 수정
+	@RequestMapping(value="/modify/{no}", method=RequestMethod.GET)
+	public String updateForm(@PathVariable("no") Long no, Model model) {
+		model.addAttribute("no", no);
+		return "board/modify";
+	}
+	
+	//	게시물 수정 액션
+	@RequestMapping(value="/update/{no}", method=RequestMethod.POST)
+	public String update(@ModelAttribute BoardVo boardVo) {
+		boolean success = boardServiceImpl.update(boardVo);
+		System.out.println(success);
+		
+		if(success) {
+			return "redirect:/board/view/{no}";
+		}
+		return "redirect:/board/modify/{no}";
+
 	}
 }

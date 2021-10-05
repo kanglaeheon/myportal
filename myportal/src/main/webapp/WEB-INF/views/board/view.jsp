@@ -5,38 +5,44 @@
 <head>
 	<title>My Homepage</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<link href="/myportal/css/board.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" 
+		href="<c:url value="/css/guestbook.css" />" />
 </head>
 <body>
-	
-	<table border="1" width="640">
-		<tr>
-			<td colspan="2"><h3>게시판</h3></td>
-		</tr>
-		<tr>
-			<th colspan="2">글보기</th>
-		</tr>
-		<tr>
-			<td>제목</td>
-			<td>제목입니다.</td>
-		</tr>
-		<tr>
-			<td>내용</td>
-			<td>
-				<div>
-					내용 1입니다.<br>
-					내용 2입니다.<br>
-					내용 3입니다.
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<a href="">글목록</a>
-				<a href="">글수정</a>
-			</td>
-		</tr>
-	</table>
-
+	<div id="container">
+		<jsp:include page="/WEB-INF/views/includes/header.jsp" />
+		<jsp:include page="/WEB-INF/views/includes/navigation.jsp" />
+		<div id="wrapper">
+			<div id="content">
+				<table border="1" width="640">
+					<tr>
+						<td colspan="2"><h3>게시판</h3></td>
+					</tr>
+					<tr>
+						<th colspan="2">글보기</th>
+					</tr>
+					<tr>
+						<td>제목</td>
+						<td>${boardVo.getTitle() }</td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td>
+							<div>
+								${boardVo.getContent() }
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<a href="<c:url value="/board/list" />">글목록</a>
+							<a href="<c:url value="/board/modify/${boardVo.getNo() }" />">글수정</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<%@ include file="/WEB-INF/views/includes/footer.jsp" %>
+	</div>
 </body>
 </html>

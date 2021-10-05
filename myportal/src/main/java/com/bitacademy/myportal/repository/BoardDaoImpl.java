@@ -27,14 +27,14 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public BoardVo getContent(Long no) {
 //		TODO: 예외처리
-		BoardVo boardVo = sqlSession.selectOne("board.selectOne");
+		BoardVo boardVo = sqlSession.selectOne("board.selectOne", no);
 		return boardVo;
 	}
 
 	@Override
 	public int update(BoardVo boardVo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int updatedCount = sqlSession.update("board.update", boardVo);
+		return updatedCount;
 	}
 
 	@Override

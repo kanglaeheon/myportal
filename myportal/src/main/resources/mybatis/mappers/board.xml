@@ -22,10 +22,21 @@
 		WHERE b.user_no = u.no
 	</select>
 	
-	<select id="selectOne" resultType="boardVo">
+	<select id="selectOne" resultType="boardVo" parameterType="Long">
 		SELECT
-			b.no,
-			
-			
+			no,
+			title,
+			content
+		FROM board
+		WHERE no = #{no}
 	</select>
+	
+	<update id="update" parameterType="boardVo">
+		UPDATE board
+		SET
+			title = #{title},
+			content = #{content},
+			reg_date = sysdate
+		WHERE no = #{no}
+	</update>
 </mapper>
