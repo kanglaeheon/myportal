@@ -12,7 +12,7 @@
 		action="<c:url value="/fileupload/upload" />"
 		enctype="multipart/form-data">
 		<label>업로드할 파일</label>
-		<input type="file" name="file1" />
+		<input type="file" name="file1" /><br />
 		<input type="submit" value="업로드" />
 	</form>
 

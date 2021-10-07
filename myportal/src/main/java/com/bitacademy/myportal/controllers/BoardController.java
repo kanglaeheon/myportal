@@ -77,13 +77,24 @@ public class BoardController {
 	//	게시물 수정 액션
 	@RequestMapping(value="/update/{no}", method=RequestMethod.POST)
 	public String update(@ModelAttribute BoardVo boardVo) {
-		boolean success = boardServiceImpl.update(boardVo);
-		System.out.println(success);
+		boolean updateSuccess = boardServiceImpl.update(boardVo);
+		System.out.println(updateSuccess);
 		
-		if(success) {
+		if(updateSuccess) {
 			return "redirect:/board/view/{no}";
 		}
 		return "redirect:/board/modify/{no}";
 
+	}
+	
+	//	게시물 삭제
+	@RequestMapping(value="/delete/{no}")
+	public String delete(@PathVariable Long no) {
+		boolean deleteSuccess = boardServiceImpl.delete(no);
+		if(deleteSuccess) {
+			return "redirect:/board/list";
+		}
+		
+		return "redirect:/board/list";
 	}
 }

@@ -37,8 +37,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public BoardVo delete(Long no) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean delete(Long no) {
+		int deletedCount = boardDaoImpl.delete(no);
+		return 1 == deletedCount;
 	}
 }

@@ -28,6 +28,7 @@ public class BoardDaoImpl implements BoardDao {
 	public BoardVo getContent(Long no) {
 //		TODO: 예외처리
 		BoardVo boardVo = sqlSession.selectOne("board.selectOne", no);
+		int hitAddedCount = sqlSession.update("board.addHit", no);
 		return boardVo;
 	}
 
@@ -39,7 +40,7 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public int delete(Long no) {
-		// TODO Auto-generated method stub
+		int deletedCount = sqlSession.delete("board.delete", no);
 		return 0;
 	}
 
