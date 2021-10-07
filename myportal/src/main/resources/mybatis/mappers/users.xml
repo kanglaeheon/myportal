@@ -18,4 +18,14 @@
 		FROM users
 		WHERE email=#{email}
 	</select>
+	
+	<update id="update" parameterType="userVo">
+		UPDATE users
+		SET 
+			name = #{name},
+			email = #{email},
+			password = #{password},
+			gender = #{gender}
+		WHERE no = #{no}
+	</update>
 </mapper>

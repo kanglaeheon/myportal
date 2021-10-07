@@ -33,6 +33,24 @@ public class UsersController {
 	@Autowired
 	private UserService userServiceImpl;
 	
+	@RequestMapping(value="/update", method=RequestMethod.GET)
+	public String updateForm() {
+		return "/users/userform";
+	}
+	
+	@RequestMapping(value="/update", method=RequestMethod.POST)
+	public String update(@ModelAttribute UserVo vo, HttpSession session) {
+		int updatedCount = userServiceImpl.updateUser(vo);
+		
+		if(updatedCount == 1) {
+			session.invalidate();
+		} else {
+			System.err.println("회원정보수정 실패!");
+		}
+		
+		return "redirect:/";
+	}
+	
 	@RequestMapping(value={"", "/", "/join"}, method=RequestMethod.GET)
 	public String joinForm(@ModelAttribute UserVo vo) {
 		//	로그 레벨에 따라 메서드가 마련
@@ -143,4 +161,5 @@ public class UsersController {
 		
 		return map;
 	}
+
 }

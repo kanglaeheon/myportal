@@ -29,5 +29,11 @@ public class UserServiceImpl implements UserService {
 		UserVo userVo = userDaoImpl.selectUser(email);
 		return userVo;
 	}
+	
+	@Override
+	public int updateUser(UserVo vo) {
+		int updatedCount = userDaoImpl.updateUser(vo);
+		return updatedCount;
+	}
 
 }
