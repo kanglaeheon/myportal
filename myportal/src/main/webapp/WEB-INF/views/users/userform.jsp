@@ -6,8 +6,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원정보수정 폼</title>
+	<link rel="stylesheet" href="<c:url value="/css/user.css" />" />
 	<script src="<c:url value="/javascript/jquery/jquery-3.6.0.js" />"></script>
-	<link rel="stylesheet" href="<c:url value="css/user.css"/>"/>
+		<script src="<c:url value="/javascript/users.js" />"></script>
 </head>
 <body>
 	<div id="container">
@@ -16,7 +17,7 @@
 		<div id="wrapper">
 			<div id="content">
 				<h1>회원 정보 수정</h1>
-				<form id="update-form" name="userUpdateForm"
+				<form id="join-form" name="userUpdateForm"
 					action="<c:url value="/users/update/"/>" method="POST">
 					<input type="hidden" name="no" value="${authUser.getNo() }">
 					<label for="name">이름</label>

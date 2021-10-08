@@ -8,6 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원 가입폼</title>
+	<link rel="stylesheet" href="<c:url value="/css/user.css" />" />
 	<script src="<c:url value="/javascript/jquery/jquery-3.6.0.js" />"></script>
 	<script src="<c:url value="/javascript/users.js" />"></script>
 </head>
@@ -19,7 +20,12 @@
 		name="registerForm" 
 		action="<c:url value="/users/join" />"
 		method="POST"
-		-->
+			-->
+	<div id="container">
+		<jsp:include page="/WEB-INF/views/includes/header.jsp" />
+		<jsp:include page="/WEB-INF/views/includes/navigation.jsp" />
+		<div id="wrapper">
+			<div id="content">
 	<form:form
 		modelAttribute="userVo"
 		id="join-form"
@@ -63,8 +69,9 @@
 			</c:if>
 		</spring:hasBindErrors>		
 		
-		<input type="button" value="id 중복 체크"
+		<input type="button" value="email 중복 체크"
 			onclick="checkEmail(this, '<c:url value="/api/users/emailcheck" />')" />
+		<br/>
 		<label for="gender">성별</label>
 		<input type="radio" name="gender" value="M" checked>남성</radio>
 		<input type="radio" name="gender" value="F">여성</radio><br>
@@ -72,5 +79,9 @@
 	
 	<!-- /form -->
 	</form:form>
+				</div>
+		</div>
+		<%@ include file="/WEB-INF/views/includes/footer.jsp" %>
+	</div>   
 </body>
 </html>

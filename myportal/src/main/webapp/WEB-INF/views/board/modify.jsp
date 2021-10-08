@@ -5,6 +5,8 @@
 <head>
 	<title>My Homepage</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" 
+		href="<c:url value="/css/board.css" />" />
 </head>
 <body>
 	<div id="container">
